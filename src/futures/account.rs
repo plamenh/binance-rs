@@ -396,6 +396,66 @@ impl FuturesAccount {
         self.client
             .post_signed(API::Futures(Futures::Order), request)
     }
+        
+    // Place a TAKE_PROFIT_MARKET close - BUY
+    pub fn take_profit_market_close_buy<S, F>(
+        &self, symbol: S, stop_price: F, qty: F,
+    ) -> Result<Transaction>
+    where
+        S: Into<String>,
+        F: Into<f64>,
+    {
+        let sell = OrderRequest {
+            symbol: symbol.into(),
+            side: OrderSide::Buy,
+            position_side: None,
+            order_type: OrderType::TakeProfitMarket,
+            time_in_force: None,
+            qty: Some(qty.into()),
+            reduce_only: None,
+            price: None,
+            stop_price: Some(stop_price.into()),
+            close_position: Some(true),
+            activation_price: None,
+            callback_rate: None,
+            working_type: None,
+            price_protect: None,
+        };
+        let order = self.build_order(sell);
+        let request = build_signed_request(order, self.recv_window)?;
+        self.client
+            .post_signed(API::Futures(Futures::Order), request)
+    }
+
+    // Place a TAKE_PROFIT_MARKET close - SELL
+    pub fn take_profit_market_close_sell<S, F>(
+        &self, symbol: S, stop_price: F, qty: F,
+    ) -> Result<Transaction>
+    where
+        S: Into<String>,
+        F: Into<f64>,
+    {
+        let sell = OrderRequest {
+            symbol: symbol.into(),
+            side: OrderSide::Sell,
+            position_side: None,
+            order_type: OrderType::TakeProfitMarket,
+            time_in_force: None,
+            qty: Some(qty.into()),
+            reduce_only: None,
+            price: None,
+            stop_price: Some(stop_price.into()),
+            close_position: Some(true),
+            activation_price: None,
+            callback_rate: None,
+            working_type: None,
+            price_protect: None,
+        };
+        let order = self.build_order(sell);
+        let request = build_signed_request(order, self.recv_window)?;
+        self.client
+            .post_signed(API::Futures(Futures::Order), request)
+    }
 
     // Custom order for for professional traders
     pub fn custom_order(&self, order_request: CustomOrderRequest) -> Result<Transaction> {
