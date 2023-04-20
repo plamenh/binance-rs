@@ -100,6 +100,7 @@ pub enum TimeInForce {
     IOC,
     FOK,
     GTX,
+    GTE_GTC,
 }
 
 impl Display for TimeInForce {
@@ -109,6 +110,7 @@ impl Display for TimeInForce {
             Self::IOC => write!(f, "IOC"),
             Self::FOK => write!(f, "FOK"),
             Self::GTX => write!(f, "GTX"),
+            Self::GTE_GTC => write!(f, "GTX"),
         }
     }
 }
