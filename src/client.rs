@@ -50,6 +50,8 @@ impl Client {
             .post(url.as_str())
             .headers(self.build_headers(true)?)
             .send()?;
+        
+        println!("response: {:?}", response);
 
         self.handler(response)
     }
