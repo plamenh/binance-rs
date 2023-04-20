@@ -399,7 +399,7 @@ impl FuturesAccount {
         
     // Place a TAKE_PROFIT_MARKET close - BUY
     pub fn take_profit_market_close_buy<S, F>(
-        &self, symbol: S, stop_price: F, qty: F,
+        &self, symbol: S, stop_price: F,
     ) -> Result<Transaction>
     where
         S: Into<String>,
@@ -411,7 +411,7 @@ impl FuturesAccount {
             position_side: None,
             order_type: OrderType::TakeProfitMarket,
             time_in_force: None,
-            qty: Some(qty.into()),
+            qty: None,
             reduce_only: None,
             price: None,
             stop_price: Some(stop_price.into()),
@@ -429,7 +429,7 @@ impl FuturesAccount {
 
     // Place a TAKE_PROFIT_MARKET close - SELL
     pub fn take_profit_market_close_sell<S, F>(
-        &self, symbol: S, stop_price: F, qty: F,
+        &self, symbol: S, stop_price: F,
     ) -> Result<Transaction>
     where
         S: Into<String>,
@@ -441,7 +441,7 @@ impl FuturesAccount {
             position_side: None,
             order_type: OrderType::TakeProfitMarket,
             time_in_force: None,
-            qty: Some(qty.into()),
+            qty: None,
             reduce_only: None,
             price: None,
             stop_price: Some(stop_price.into()),
