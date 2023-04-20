@@ -366,6 +366,7 @@ impl FuturesAccount {
             price_protect: None,
         };
         let order = self.build_order(sell);
+        println!("{:?}", order);
         let request = build_signed_request(order, self.recv_window)?;
         self.client
             .post_signed(API::Futures(Futures::Order), request)
@@ -394,6 +395,7 @@ impl FuturesAccount {
             price_protect: None,
         };
         let order = self.build_order(sell);
+        println!("{:?}", order);
         let request = build_signed_request(order, self.recv_window)?;
         self.client
             .post_signed(API::Futures(Futures::Order), request)
@@ -424,6 +426,7 @@ impl FuturesAccount {
             price_protect: None,
         };
         let order = self.build_order(sell);
+        println!("{:?}", order);
         let request = build_signed_request(order, self.recv_window)?;
         self.client
             .post_signed(API::Futures(Futures::Order), request)
@@ -454,6 +457,7 @@ impl FuturesAccount {
             price_protect: None,
         };
         let order = self.build_order(sell);
+        println!("{:?}", order);
         let request = build_signed_request(order, self.recv_window)?;
         self.client
             .post_signed(API::Futures(Futures::Order), request)
