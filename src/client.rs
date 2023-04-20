@@ -45,7 +45,6 @@ impl Client {
 
     pub fn post_signed<T: DeserializeOwned>(&self, endpoint: API, request: String) -> Result<T> {
         let url = self.sign_request(endpoint, Some(request));
-        println!("{}", url);
         let client = &self.inner_client;
         let response = client
             .post(url.as_str())
