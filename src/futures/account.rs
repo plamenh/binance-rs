@@ -383,7 +383,7 @@ impl FuturesAccount {
             side: OrderSide::Sell,
             position_side: None,
             order_type: OrderType::StopMarket,
-            time_in_force: TimeInForce::GTE_GTC,
+            time_in_force: Some(TimeInForce::GTE_GTC),
             qty: None,
             reduce_only: None,
             price: None,
